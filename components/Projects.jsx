@@ -6,7 +6,12 @@ export default function Projects() {
       <div className="section-label">Projects</div>
       <div className="projects-grid">
         {projects.map((p, i) => (
-          <a href={p.url} target="_blank" rel="noreferrer" className="project-card" key={i}>
+          <a
+            href={`#project/${p.slug}`}
+            className="project-card"
+            key={p.slug}
+            style={{ '--delay': `${i * 90}ms` }}
+          >
             <div>
               <div className="project-meta">
                 <span className="project-tag">{p.tag}</span>

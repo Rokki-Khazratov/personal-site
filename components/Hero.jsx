@@ -1,4 +1,4 @@
-import { personal } from '../data.js';
+import { nowPlaying, personal } from '../data.js';
 
 export default function Hero({ weather }) {
   return (
@@ -29,12 +29,12 @@ export default function Hero({ weather }) {
           <div className="status-sep"></div>
           <div className="status-item">
             <div className="status-dot"></div>
-            {/* TODO: connect Spotify API — replace with real now-playing data */}
-            <span title="Now playing">Not playing</span>
+            <a href={nowPlaying.url} target="_blank" rel="noreferrer" title="Spotify">
+              {nowPlaying.title} - {nowPlaying.artist}
+            </a>
           </div>
         </div>
 
-        {/* Links */}
         <div className="hero-links">
           <a href={personal.github} target="_blank" rel="noreferrer" className="hero-link">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
@@ -72,7 +72,6 @@ export default function Hero({ weather }) {
         </div>
       </div>
 
-      {/* Photo — swap placeholder for <img src={personal.photo} alt="Bek" /> when ready */}
       <div className="hero-photo">
         <div className="hero-photo-placeholder">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
