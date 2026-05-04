@@ -1,6 +1,8 @@
-import { projects } from '../data.js';
+import { listProjects } from '../db/projects.js';
 
 export default function Projects() {
+  const projects = listProjects();
+
   return (
     <section id="projects">
       <div className="section-label">Projects</div>

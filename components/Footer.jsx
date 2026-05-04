@@ -1,6 +1,6 @@
 import { personal } from '../data.js';
 
-export default function Footer({ weatherTemp }) {
+export default function Footer({ weather, viennaTime }) {
   return (
     <footer>
       <div className="footer-left">
@@ -42,7 +42,9 @@ export default function Footer({ weatherTemp }) {
             Vienna
           </span>
           <span className="footer-meta-sep">·</span>
-          <span className="footer-meta-item">{weatherTemp}</span>
+          <span className="footer-meta-item">{viennaTime}</span>
+          <span className="footer-meta-sep">·</span>
+          <span className="footer-meta-item">{weather}</span>
         </div>
       </div>
     </footer>

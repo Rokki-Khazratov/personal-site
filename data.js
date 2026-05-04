@@ -1,4 +1,5 @@
-// All site data — edit this file to update content
+// Site data. Rich project entries live in db/projects.js.
+export { projectRecords as projects } from './db/projects.js';
 
 export const personal = {
   name: { first: 'Bek', last: 'Khazratov' },
@@ -72,51 +73,6 @@ export const experience = [
       'Built and maintained e-commerce websites for member companies of the association',
       'Covered catalog, order, payment, and basic analytics flows',
     ],
-  },
-];
-
-export const projects = [
-  {
-    slug: 'geoagro',
-    title: 'GeoAgro',
-    tag: 'Gov · Agri · Backend',
-    year: '2024',
-    desc: 'National agricultural monitoring platform for the Agro-Industry Development Agency. Used by 300 Ministry staff across 13 regions to manage 40,000 orchards. Django, PostgreSQL, Redis, Celery, Docker.',
-    stack: ['Django', 'PostgreSQL', 'Redis', 'Celery', 'Docker'],
-    highlights: [
-      'Role-based access for ministry teams across 13 regions',
-      'Moderation flows, analytics, and background jobs',
-      'Stable API contracts for web and mobile clients',
-    ],
-    url: 'https://github.com/Rokki-Khazratov/',
-  },
-  {
-    slug: 'tender-erp',
-    title: 'Tender ERP',
-    tag: 'ERP · Procurement',
-    year: '2025',
-    desc: 'Tender and deal management platform for tracking lots, suppliers, payments, and approval workflows across finance, logistics, and operations teams.',
-    stack: ['Django', 'PostgreSQL', 'REST APIs', 'Admin workflows'],
-    highlights: [
-      'Deal lifecycle screens for tender operations',
-      'Supplier, payment, and deadline tracking',
-      'Role-based approval paths for internal teams',
-    ],
-    url: 'https://github.com/Rokki-Khazratov/',
-  },
-  {
-    slug: 'global-expo-platform',
-    title: 'GLOBAL EXPO Platform',
-    tag: 'Events · Full-stack',
-    year: '2023',
-    desc: 'Event management system with QR-based visitor registration, access control, and exhibition administration for live industrial expositions.',
-    stack: ['JavaScript', 'REST APIs', 'QR check-in', 'Admin tools'],
-    highlights: [
-      'Visitor registration and QR-based access flow',
-      'Live event administration tooling',
-      'Legacy module cleanup for faster operator workflows',
-    ],
-    url: 'https://github.com/Rokki-Khazratov/',
   },
 ];
 

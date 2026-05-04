@@ -29,7 +29,6 @@ export default function App() {
     return getStoredTheme();
   });
   const [weather, setWeather] = useState('Loading...');
-  const [weatherTemp, setWeatherTemp] = useState('—');
   const [viennaTime, setViennaTime] = useState('Loading...');
   const [hash, setHash] = useState(() => window.location.hash);
 
@@ -53,11 +52,9 @@ export default function App() {
         const desc = cur.weatherDesc?.[0]?.value || 'Vienna';
 
         setWeather(`${temp} · ${desc}`);
-        setWeatherTemp(temp);
       })
       .catch(() => {
         setWeather('Vienna');
-        setWeatherTemp('—');
       });
 
     const fetchTime = () => {
@@ -84,7 +81,6 @@ export default function App() {
   useEffect(() => {
     const onHashChange = () => {
       setHash(window.location.hash);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     window.addEventListener('hashchange', onHashChange);
@@ -94,12 +90,26 @@ export default function App() {
   const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
   const projectSlug = hash.startsWith('#project/') ? hash.replace('#project/', '') : null;
 
+  useEffect(() => {
+    if (projectSlug) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (!hash) return;
+
+    window.requestAnimationFrame(() => {
+      const target = document.getElementById(hash.slice(1));
+      target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }, [hash, projectSlug]);
+
   if (projectSlug) {
     return (
       <>
         <Nav theme={theme} onToggleTheme={toggleTheme} />
         <ProjectDetail slug={projectSlug} />
-        <Footer weatherTemp={weatherTemp} />
+        <Footer weather={weather} viennaTime={viennaTime} />
       </>
     );
   }
@@ -121,7 +131,7 @@ export default function App() {
         <Stack />
       </main>
 
-      <Footer weatherTemp={weatherTemp} />
+      <Footer weather={weather} viennaTime={viennaTime} />
     </>
   );
 }
