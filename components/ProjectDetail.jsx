@@ -6,7 +6,7 @@ export default function ProjectDetail({ slug }) {
   return (
     <main className="project-detail-page">
       <section className="project-detail">
-        <a href="/#projects" className="back-link">← Back to projects</a>
+        <a href="#projects" className="back-link">← Back to projects</a>
 
         <div className="project-detail-head">
           <div>

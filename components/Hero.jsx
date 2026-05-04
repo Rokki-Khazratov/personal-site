@@ -79,7 +79,7 @@ export default function Hero({ weather }) {
             <circle cx="12" cy="10" r="3"/>
             <path d="M6 21c0-3.314 2.686-6 6-6s6 2.686 6 6"/>
           </svg>
-          <span>photo</span>
+          <span>BK</span>
         </div>
       </div>
     </section>

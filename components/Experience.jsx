@@ -6,7 +6,7 @@ export default function Experience() {
       <div className="section-label">Experience</div>
       <div className="exp-list">
         {experience.map((item, i) => (
-          <div className="exp-item" key={i}>
+          <div className="exp-item" key={i} style={{ '--delay': `${i * 70}ms` }}>
             <div>
               <div className="exp-company">{item.company}</div>
               <div className="exp-role">{item.role} · {item.type}</div>
