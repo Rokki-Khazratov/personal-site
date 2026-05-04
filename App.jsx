@@ -15,6 +15,14 @@ function getStoredTheme() {
   }
 }
 
+function formatViennaTime(datetime) {
+  return new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Vienna',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(new Date(datetime));
+}
+
 export default function App() {
   const [theme, setTheme] = useState(() => {
     if (typeof window === 'undefined') return 'dark';
@@ -22,6 +30,7 @@ export default function App() {
   });
   const [weather, setWeather] = useState('Loading...');
   const [weatherTemp, setWeatherTemp] = useState('—');
+  const [viennaTime, setViennaTime] = useState('Loading...');
   const [hash, setHash] = useState(() => window.location.hash);
 
   useEffect(() => {
@@ -51,7 +60,25 @@ export default function App() {
         setWeatherTemp('—');
       });
 
-    return () => controller.abort();
+    const fetchTime = () => {
+      fetch('https://worldtimeapi.org/api/timezone/Europe/Vienna', { signal: controller.signal })
+        .then(r => r.json())
+        .then(data => {
+          if (!data.datetime) return;
+          setViennaTime(formatViennaTime(data.datetime));
+        })
+        .catch(() => {
+          setViennaTime(formatViennaTime(new Date().toISOString()));
+        });
+    };
+
+    fetchTime();
+    const timeInterval = window.setInterval(fetchTime, 60000);
+
+    return () => {
+      window.clearInterval(timeInterval);
+      controller.abort();
+    };
   }, []);
 
   useEffect(() => {
@@ -82,7 +109,7 @@ export default function App() {
       <Nav theme={theme} onToggleTheme={toggleTheme} />
 
       <main>
-        <Hero weather={weather} />
+        <Hero weather={weather} viennaTime={viennaTime} />
 
         <div className="section-divider"></div>
         <Experience />

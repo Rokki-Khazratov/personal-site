@@ -139,6 +139,8 @@ export const stack = {
   'Data': [
     { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/4169E1' },
     { name: 'Redis',      icon: 'https://cdn.simpleicons.org/redis/FF4438' },
+    { name: 'MongoDB',    icon: 'https://cdn.simpleicons.org/mongodb/47A248' },
+    { name: 'Pandas',     icon: 'https://cdn.simpleicons.org/pandas/150458' },
   ],
   'Infra': [
     { name: 'Docker',     icon: 'https://cdn.simpleicons.org/docker/2496ED' },

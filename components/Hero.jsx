@@ -1,6 +1,6 @@
 import { nowPlaying, personal } from '../data.js';
 
-export default function Hero({ weather }) {
+export default function Hero({ weather, viennaTime }) {
   return (
     <section id="hero">
       <div className="hero-content">
@@ -12,12 +12,15 @@ export default function Hero({ weather }) {
 
         {/* Status bar */}
         <div className="status-bar">
-          <div className="status-item">
+          <div className="status-item status-place">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
             </svg>
-            {personal.location}
+            <span className="status-place-text">
+              <span>{personal.location}</span>
+              <span className="status-time">{viennaTime}</span>
+            </span>
           </div>
           <div className="status-sep"></div>
           <div className="status-item">
@@ -72,16 +75,6 @@ export default function Hero({ weather }) {
         </div>
       </div>
 
-      <div className="hero-photo">
-        <div className="hero-photo-placeholder">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="4"/>
-            <circle cx="12" cy="10" r="3"/>
-            <path d="M6 21c0-3.314 2.686-6 6-6s6 2.686 6 6"/>
-          </svg>
-          <span>BK</span>
-        </div>
-      </div>
     </section>
   );
 }
