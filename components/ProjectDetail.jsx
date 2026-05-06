@@ -2,9 +2,6 @@ import { getProjectBySlug } from '../db/projects.js';
 
 export default function ProjectDetail({ slug }) {
   const project = getProjectBySlug(slug);
-  const images = project.media.filter(item => item.type === 'image');
-  const videos = project.media.filter(item => item.type === 'video');
-  const documents = project.media.filter(item => item.type === 'pdf');
 
   return (
     <main className="project-detail-page">
@@ -26,17 +23,47 @@ export default function ProjectDetail({ slug }) {
 
         <p className="project-detail-desc">{project.desc}</p>
 
-        <div className="project-story">
-          {project.body.map(paragraph => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
+        {project.contentBlocks.map((block, index) => {
+          if (block.type === 'text') {
+            return (
+              <div className="project-story" key={`${block.type}-${index}`}>
+                {block.paragraphs.map(paragraph => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            );
+          }
 
-        <div className="project-media-grid">
-          {images.map(item => (
-            <img key={item.src} src={item.src} alt={item.alt} loading="lazy" />
-          ))}
-        </div>
+          if (block.type === 'gallery') {
+            return (
+              <div className="project-media-grid" key={`${block.type}-${index}`}>
+                {block.items.map(item => (
+                  <img key={item.src} src={item.src} alt={item.alt} loading="lazy" />
+                ))}
+              </div>
+            );
+          }
+
+          if (block.type === 'video') {
+            return (
+              <div className="project-asset" key={`${block.type}-${index}`}>
+                <div className="detail-label">{block.title}</div>
+                <video src={block.src} controls preload="metadata" />
+              </div>
+            );
+          }
+
+          if (block.type === 'pdf') {
+            return (
+              <a className="project-pdf" href={block.src} target="_blank" rel="noreferrer" key={`${block.type}-${index}`}>
+                <span>{block.title}</span>
+                <span>PDF ↗</span>
+              </a>
+            );
+          }
+
+          return null;
+        })}
 
         <div className="project-detail-grid">
           <div>
@@ -56,22 +83,6 @@ export default function ProjectDetail({ slug }) {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="project-assets">
-          {videos.map(item => (
-            <div className="project-asset" key={item.src}>
-              <div className="detail-label">{item.title}</div>
-              <video src={item.src} controls preload="metadata" />
-            </div>
-          ))}
-
-          {documents.map(item => (
-            <a className="project-pdf" href={item.src} target="_blank" rel="noreferrer" key={item.src}>
-              <span>{item.title}</span>
-              <span>PDF ↗</span>
-            </a>
-          ))}
         </div>
       </section>
     </main>

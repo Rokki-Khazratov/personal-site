@@ -1,24 +1,10 @@
-// Site data. Rich project entries live in db/projects.js.
+// Site data. Admin-facing constants live in db/siteSettings.js; project entries live in db/projects.js.
+import { siteSettings } from './db/siteSettings.js';
+
 export { projectRecords as projects } from './db/projects.js';
+export { siteConstantsTable } from './db/siteSettings.js';
 
-export const personal = {
-  name: { first: 'Bek', last: 'Khazratov' },
-  title: 'Software Engineer',
-  bio: 'Software engineer with 3+ years building backend systems, APIs, and internal tools for government platforms and startups. Backend-focused, based in Vienna, open to roles across the EU.',
-  location: 'Vienna, Austria',
-  email: 'khazratovz@gmail.com',
-  phone: '+43 688 64454147',
-  github: 'https://github.com/Rokki-Khazratov/',
-  githubHandle: 'Rokki-Khazratov',
-  linkedin: 'https://www.linkedin.com/in/shamshodbek-khazratov-751954225/',
-  linkedinHandle: 'shamshodbek-khazratov',
-};
-
-export const nowPlaying = {
-  title: 'Fuel',
-  artist: 'Metallica',
-  url: 'https://open.spotify.com/track/6FUwPb4mGlUDbx42uspXaZ',
-};
+export const { personal, nowPlaying } = siteSettings;
 
 export const experience = [
   {
