@@ -1,6 +1,4 @@
-import { nowPlaying, personal } from '../data.js';
-
-export default function Hero({ weather, viennaTime }) {
+export default function Hero({ personal, nowPlaying, weather, viennaTime }) {
   return (
     <section id="hero">
       <div className="hero-content">

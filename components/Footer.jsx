@@ -1,6 +1,4 @@
-import { personal } from '../data.js';
-
-export default function Footer({ weather, viennaTime }) {
+export default function Footer({ personal, weather, viennaTime }) {
   return (
     <footer>
       <div className="footer-left">

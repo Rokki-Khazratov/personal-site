@@ -1,7 +1,17 @@
-import { listProjects } from '../db/projects.js';
-
-export default function Projects() {
-  const projects = listProjects();
+export default function Projects({ projects }) {
+  if (!projects.length) {
+    return (
+      <section id="projects">
+        <div className="section-label">Projects</div>
+        <div className="project-card">
+          <div>
+            <div className="project-title">No projects yet</div>
+            <div className="project-desc">Open #admin to add project records.</div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="projects">

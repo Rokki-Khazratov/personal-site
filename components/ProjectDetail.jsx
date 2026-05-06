@@ -1,7 +1,15 @@
-import { getProjectBySlug } from '../db/projects.js';
-
-export default function ProjectDetail({ slug }) {
-  const project = getProjectBySlug(slug);
+export default function ProjectDetail({ project }) {
+  if (!project) {
+    return (
+      <main className="project-detail-page">
+        <section className="project-detail">
+          <a href="#projects" className="back-link">← Back to projects</a>
+          <h1>Project not found</h1>
+          <p className="project-detail-desc">Add or restore projects from the admin panel.</p>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="project-detail-page">

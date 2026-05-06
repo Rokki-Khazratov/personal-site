@@ -6,6 +6,8 @@ import Projects from './components/Projects.jsx';
 import ProjectDetail from './components/ProjectDetail.jsx';
 import Stack from './components/Stack.jsx';
 import Footer from './components/Footer.jsx';
+import AdminPanel from './components/AdminPanel.jsx';
+import { buildSiteSettings, loadAdminData } from './db/adminStore.js';
 
 function getStoredTheme() {
   try {
@@ -31,6 +33,7 @@ export default function App() {
   const [weather, setWeather] = useState('Loading...');
   const [viennaTime, setViennaTime] = useState('Loading...');
   const [hash, setHash] = useState(() => window.location.hash);
+  const [adminData, setAdminData] = useState(() => loadAdminData());
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -89,9 +92,13 @@ export default function App() {
 
   const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
   const projectSlug = hash.startsWith('#project/') ? hash.replace('#project/', '') : null;
+  const isAdmin = hash === '#admin';
+  const { personal, nowPlaying } = buildSiteSettings(adminData.constants);
+  const projects = adminData.projects;
+  const activeProject = projects.find(project => project.slug === projectSlug) || projects[0];
 
   useEffect(() => {
-    if (projectSlug) {
+    if (projectSlug || isAdmin) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -102,14 +109,23 @@ export default function App() {
       const target = document.getElementById(hash.slice(1));
       target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-  }, [hash, projectSlug]);
+  }, [hash, isAdmin, projectSlug]);
+
+  if (isAdmin) {
+    return (
+      <>
+        <Nav theme={theme} onToggleTheme={toggleTheme} />
+        <AdminPanel data={adminData} onSave={setAdminData} />
+      </>
+    );
+  }
 
   if (projectSlug) {
     return (
       <>
         <Nav theme={theme} onToggleTheme={toggleTheme} />
-        <ProjectDetail slug={projectSlug} />
-        <Footer weather={weather} viennaTime={viennaTime} />
+        <ProjectDetail project={activeProject} />
+        <Footer personal={personal} weather={weather} viennaTime={viennaTime} />
       </>
     );
   }
@@ -119,19 +135,19 @@ export default function App() {
       <Nav theme={theme} onToggleTheme={toggleTheme} />
 
       <main>
-        <Hero weather={weather} viennaTime={viennaTime} />
+        <Hero personal={personal} nowPlaying={nowPlaying} weather={weather} viennaTime={viennaTime} />
 
         <div className="section-divider"></div>
         <Experience />
 
         <div className="section-divider"></div>
-        <Projects />
+        <Projects projects={projects} />
 
         <div className="section-divider"></div>
         <Stack />
       </main>
 
-      <Footer weather={weather} viennaTime={viennaTime} />
+      <Footer personal={personal} weather={weather} viennaTime={viennaTime} />
     </>
   );
 }
