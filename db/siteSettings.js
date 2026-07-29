@@ -1,11 +1,11 @@
 export const siteConstantsTable = [
   { key: 'name.first', label: 'First name', value: 'Bek', type: 'text', group: 'profile' },
   { key: 'name.last', label: 'Last name', value: 'Khazratov', type: 'text', group: 'profile' },
-  { key: 'title', label: 'Title', value: 'Software Engineer', type: 'text', group: 'profile' },
+  { key: 'title', label: 'Title', value: 'Python Backend Engineer', type: 'text', group: 'profile' },
   {
     key: 'bio',
     label: 'About text',
-    value: 'Software engineer with 3+ years building backend systems, APIs, and internal tools for government platforms and startups. Backend-focused, based in Vienna.',
+    value: 'Python Backend Engineer with 3+ years building APIs, workflow-heavy business systems, and data-driven services. Available for part-time working-student roles in Vienna or remote within Austria.',
     type: 'textarea',
     group: 'profile',
   },
@@ -17,11 +17,11 @@ export const siteConstantsTable = [
   {
     key: 'linkedin.url',
     label: 'LinkedIn URL',
-    value: 'https://www.linkedin.com/in/shamshodbek-khazratov-751954225/',
+    value: 'https://www.linkedin.com/in/bek-khazratov-751954225/',
     type: 'url',
     group: 'links',
   },
-  { key: 'linkedin.handle', label: 'LinkedIn handle', value: 'shamshodbek-khazratov', type: 'text', group: 'links' },
+  { key: 'linkedin.handle', label: 'LinkedIn handle', value: 'bek-khazratov-751954225', type: 'text', group: 'links' },
   { key: 'spotify.title', label: 'Spotify track', value: 'Fuel', type: 'text', group: 'music' },
   { key: 'spotify.artist', label: 'Spotify artist', value: 'Metallica', type: 'text', group: 'music' },
   {

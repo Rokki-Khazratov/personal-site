@@ -1,141 +1,105 @@
+const CASE_STUDIES = 'https://github.com/Rokki-Khazratov/portfolio-case-studies/tree/main';
+const RAW = 'https://raw.githubusercontent.com/Rokki-Khazratov/portfolio-case-studies/main';
+
 export const projectRecords = [
   {
-    slug: 'geoagro',
-    title: 'GeoAgro',
-    tag: 'Gov · Agro · Backend',
-    year: '2024',
-    desc: 'National agricultural monitoring platform for the Agro-Industry Development Agency. Used by 300 Ministry staff across 13 regions to manage 40,000 orchards. Django, PostgreSQL, Redis, Celery, Docker.',
-    stack: ['Django', 'PostgreSQL', 'Redis', 'Celery', 'Docker'],
+    slug: 'examtwin',
+    title: 'ExamTwin',
+    tag: 'AI · EdTech · Full-stack',
+    year: '2026',
+    desc: 'An adaptive exam-preparation workspace that turns a subject and study context into mock exams, focused runs, evidence-aware review, and progress analytics.',
+    stack: ['Next.js', 'FastAPI', 'PostgreSQL + pgvector', 'Redis', 'Dramatiq'],
     highlights: [
-      'Role-based access for ministry teams across 13 regions',
-      'Moderation flows, analytics, and background jobs',
-      'Stable API contracts for web and mobile clients',
+      'Exam configuration, attempt lifecycle, and focused mock-run workflow',
+      'Analytics for study progress and review of exam evidence',
+      'Background artifact processing with a clear optional grounded-AI boundary',
     ],
     contentBlocks: [
       {
         type: 'text',
         paragraphs: [
-          'GeoAgro centralizes orchard inventory, moderation, and analytics workflows for regional ministry teams.',
-          'The backend focused on reliable permissions, clear API contracts, and background processing for data-heavy operations.',
+          'ExamTwin is designed around the full preparation loop: configure a subject, create an exam, take a focused run, and use the result to guide the next study session.',
+          'The public case study documents the product flow and the architecture behind it: a Next.js workspace, a FastAPI domain API, PostgreSQL with pgvector, Redis-backed jobs, Dramatiq workers, private artifact storage, and an optional grounded-AI integration.',
         ],
       },
       {
         type: 'gallery',
         items: [
           {
-            src: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=80',
-            alt: 'Agricultural fields from above',
+            src: `${RAW}/examtwin/assets/dashboard.jpg`,
+            alt: 'ExamTwin preparation dashboard',
           },
           {
-            src: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1400&q=80',
-            alt: 'Farm rows in daylight',
+            src: `${RAW}/examtwin/assets/exam-creation.jpg`,
+            alt: 'ExamTwin exam creation flow',
+          },
+          {
+            src: `${RAW}/examtwin/assets/analytics.jpg`,
+            alt: 'ExamTwin analytics view',
           },
         ],
       },
-      {
-        type: 'video',
-        title: 'Platform media placeholder',
-        src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
-      },
-      {
-        type: 'pdf',
-        title: 'Case study PDF',
-        src: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-      },
     ],
-    url: 'https://github.com/Rokki-Khazratov/',
+    url: `${CASE_STUDIES}/examtwin`,
   },
   {
     slug: 'tender-erp',
     title: 'Tender ERP',
-    tag: 'ERP · Procurement',
-    year: '2025',
-    desc: 'Tender and deal management platform for tracking lots, suppliers, payments, and approval workflows across finance, logistics, and operations teams.',
-    stack: ['Django', 'PostgreSQL', 'REST APIs', 'Admin workflows'],
+    tag: 'ERP · Procurement · RBAC',
+    year: '2025–26',
+    desc: 'A role-aware tender operations system for tracking deals, clients, suppliers, finance, deadlines, documents, and approval paths across internal teams.',
+    stack: ['React', 'TypeScript', 'Django REST Framework', 'PostgreSQL', 'Celery', 'RBAC'],
     highlights: [
-      'Deal lifecycle screens for tender operations',
-      'Supplier, payment, and deadline tracking',
-      'Role-based approval paths for internal teams',
+      'Deal lifecycle management spanning commercial, finance, and operations teams',
+      'Role-scoped actions, auditability, notifications, and operational reporting',
+      'Clear separation of UI, workflow API, business records, background jobs, and integrations',
     ],
     contentBlocks: [
       {
         type: 'text',
         paragraphs: [
-          'Tender ERP organizes procurement work around lots, suppliers, approvals, payments, and internal reporting.',
-          'The main goal was to make operational state visible and keep managers, finance, logistics, and operations aligned.',
+          'Tender ERP makes tender work legible across the people who have to move it forward: managers, heads, finance, logistics, and administrators.',
+          'The system design focuses on role-aware workflow actions, structured deal data, audit events, deadline-oriented background work, notification boundaries, and reporting. The public case study deliberately contains no customer, deal, financial, or document data.',
         ],
-      },
-      {
-        type: 'gallery',
-        items: [
-          {
-            src: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80',
-            alt: 'Business workflow desk',
-          },
-          {
-            src: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80',
-            alt: 'Financial documents and calculator',
-          },
-        ],
-      },
-      {
-        type: 'video',
-        title: 'ERP workflow media placeholder',
-        src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
-      },
-      {
-        type: 'pdf',
-        title: 'Workflow PDF',
-        src: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
       },
     ],
-    url: 'https://github.com/Rokki-Khazratov/',
+    url: `${CASE_STUDIES}/tender-erp`,
   },
   {
-    slug: 'global-expo-platform',
-    title: 'GLOBAL EXPO Platform',
-    tag: 'Events · Full-stack',
-    year: '2023',
-    desc: 'Event management system with QR-based visitor registration, access control, and exhibition administration for live industrial expositions.',
-    stack: ['JavaScript', 'REST APIs', 'QR check-in', 'Admin tools'],
+    slug: 'menumargin-ai',
+    title: 'MenuMargin AI',
+    tag: 'AI · Forecasting · Product',
+    year: '2026',
+    desc: 'A restaurant margin decision-support prototype that connects menu risk, forecast signals, external cost context, and price or scenario recommendations.',
+    stack: ['Next.js', 'FastAPI', 'Sybilion', 'Eurostat / HICP', 'Scenario analysis'],
     highlights: [
-      'Visitor registration and QR-based access flow',
-      'Live event administration tooling',
-      'Legacy module cleanup for faster operator workflows',
+      'Six-month menu-margin outlook with dish-level risk signals',
+      'Scenario controls for price, lead time, and demand constraints',
+      'Forecast boundary made explicit instead of presenting predictions as certainty',
     ],
     contentBlocks: [
       {
         type: 'text',
         paragraphs: [
-          'GLOBAL EXPO Platform supported live visitor registration, QR check-in, access control, and administration flows.',
-          'The work balanced public-facing registration screens with internal tools that needed to stay fast during live events.',
+          'MenuMargin AI is a prototype for translating uncertain ingredient costs into practical decisions for restaurant operators.',
+          'Its decision loop combines a Next.js dashboard, a FastAPI decision service, a Sybilion forecast boundary, and Eurostat/HICP context. The visual story is intentionally labelled as prototype/demo data rather than a production financial system.',
         ],
       },
       {
         type: 'gallery',
         items: [
           {
-            src: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1400&q=80',
-            alt: 'Conference hall with audience',
+            src: `${RAW}/menumargin-ai/assets/forecast-dashboard.png`,
+            alt: 'MenuMargin AI forecast and margin dashboard',
           },
           {
-            src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=80',
-            alt: 'Live event venue',
+            src: `${RAW}/menumargin-ai/assets/backtest-demo.png`,
+            alt: 'MenuMargin AI backtest demonstration',
           },
         ],
       },
-      {
-        type: 'video',
-        title: 'Event media placeholder',
-        src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
-      },
-      {
-        type: 'pdf',
-        title: 'Event flow PDF',
-        src: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-      },
     ],
-    url: 'https://github.com/Rokki-Khazratov/',
+    url: `${CASE_STUDIES}/menumargin-ai`,
   },
 ];
 

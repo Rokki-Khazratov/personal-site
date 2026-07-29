@@ -41,16 +41,6 @@ export const experience = [
     ],
   },
   {
-    company: 'Kiwy.uz · Wheels.uz',
-    role: 'Backend Developer',
-    type: 'Short-term contracts',
-    period: 'Oct 2023 — Apr 2024',
-    bullets: [
-      'Kiwy.uz: backend for a footwear marketplace — product, order, delivery, and pickup-point workflows',
-      'Wheels.uz: APIs for an installment-based tire sales startup; query optimisation and partner integrations',
-    ],
-  },
-  {
     company: 'Uzcharmsanoat',
     role: 'Frontend Developer',
     type: 'Hybrid',
